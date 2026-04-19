@@ -17,7 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **UI 对比度异常 (光学迷彩)**：重构了 `values-night/colors.xml` 的主色调 (Primary Color) 明度，修复了深色模式下 `OutlinedButton` 和 `TextButton`（如“更改目录”、“批量提取 txt”）文字隐形的问题。
 - **状态栏/导航栏沉浸式适配**：修复了深浅色模式切换时，系统状态栏和底部导航栏出现刺眼白条的问题。
 
-## [1.0.1] - 2026-04-XX
+## [1.0.1] - 2026-04-18
 ### Added
 - 发布 PocketBase 初始正式版。
 - 实现基础的本地书库目录扫描与文件映射。
