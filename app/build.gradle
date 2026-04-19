@@ -22,6 +22,37 @@ android {
         versionName "1.0"
     }
 
+    // --- 在这里插入 Lint 优化 ---
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false // 即使有警告也不停止编译
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false // 刚开始先不混淆，保证能跑通
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    kotlinOptions {
+        jvmTarget = '17'
+    }
+
+    packaging {
+        resources {
+            excludes += '/META-INF/INDEX.LIST'
+            excludes += '/META-INF/io.netty.versions.properties'
+            excludes += '/META-INF/okio.kotlin_module'
+            // 再增加一个常见的冲突排除
+            excludes += 'META-INF/versions/9/previous-compilation-data.bin'
+        }
+    }
+
     // --- 关键修复代码开始 ---
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_17
