@@ -1,12 +1,12 @@
 package com.xiao.pocketbase
 
-import io.ktor.server.engine.*
-import io.ktor.server.netty.*
-import io.ktor.server.routing.*
-import io.ktor.server.response.*
-import io.ktor.server.application.*
 import io.ktor.http.ContentType
 import io.ktor.http.HttpStatusCode
+import io.ktor.server.application.*
+import io.ktor.server.engine.*
+import io.ktor.server.netty.*
+import io.ktor.server.response.*
+import io.ktor.server.routing.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -25,11 +25,13 @@ object OpdsServer {
             try {
                 server = embeddedServer(Netty, port = 8080, host = "0.0.0.0") {
                     routing {
+                        // 1. OPDS 目录索引路由
                         get("/opds") {
                             val xml = generateOpdsXml(BookRepository.getBooks())
                             call.respondText(xml, ContentType.parse("application/atom+xml; charset=utf-8"))
                         }
 
+                        // 2. 实体文件或影子转换下载路由
                         get("/download/{fileName}") {
                             val fileName = call.parameters["fileName"] ?: return@get call.respond(HttpStatusCode.BadRequest)
                             val file = File(BookRepository.getRootPath(), fileName)
@@ -46,15 +48,32 @@ object OpdsServer {
                             }
                         }
 
+                        // 3. 动态封面路由 (本地提取/生成 -> 网络链接兜底)
                         get("/cover/{fileName}") {
                             val fileName = call.parameters["fileName"] ?: return@get call.respond(HttpStatusCode.BadRequest)
-                            val book = BookRepository.getBooks().find { it.first.name == fileName }
-                            val coverUrl = book?.second?.coverUrl
+                            val file = File(BookRepository.getRootPath(), fileName)
+                            
+                            if (!file.exists()) return@get call.respond(HttpStatusCode.NotFound)
 
-                            if (!coverUrl.isNullOrEmpty()) {
-                                call.respondRedirect(coverUrl, permanent = false)
+                            val book = BookRepository.getBooks().find { it.first.name == fileName }
+                            // 提取书名用于生成 TXT 封面，如果 meta 里没有 title，就用文件名兜底
+                            val bookTitle = book?.second?.title?.takeIf { it.isNotBlank() } ?: file.nameWithoutExtension
+
+                            // 优先尝试本地提取 (EPUB 内置封面) 或 动态生成 (TXT 莫兰迪纯色封面)
+                            val coverBytes = CoverProvider.getCoverBytes(file, bookTitle)
+
+                            if (coverBytes != null) {
+                                // 成功获取到字节流，直接以 PNG 图片格式响应给客户端
+                                call.respondBytes(coverBytes, ContentType.Image.PNG)
                             } else {
-                                call.respond(HttpStatusCode.NotFound)
+                                // 如果本地提取失败（比如 EPUB 破损或者没有内置封面），降级检查网络元数据
+                                val coverUrl = book?.second?.coverUrl
+                                if (!coverUrl.isNullOrEmpty()) {
+                                    call.respondRedirect(coverUrl, permanent = false)
+                                } else {
+                                    // 彻底没招了，返回 404
+                                    call.respond(HttpStatusCode.NotFound)
+                                }
                             }
                         }
                     }
@@ -108,5 +127,8 @@ object OpdsServer {
         return sb.toString()
     }
 
-    fun stop() { server?.stop(1000, 2000); server = null }
+    fun stop() { 
+        server?.stop(1000, 2000)
+        server = null 
+    }
 }
