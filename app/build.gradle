@@ -7,19 +7,18 @@ plugins {
 repositories {
     google()
     mavenCentral()
-    compileSdkVersion 34
 }
 
 android {
     namespace 'com.xiao.pocketbase'
     compileSdk 34
+    compileSdkVersion 34
 
     defaultConfig {
         applicationId "com.xiao.pocketbase"
         minSdk 24
         targetSdk 34
         versionCode 1
-        // --- 霄，以后改版本号看这里 ---
         versionName "1.0.1" 
     }
 
