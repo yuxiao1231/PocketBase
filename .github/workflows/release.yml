@@ -46,4 +46,4 @@ jobs:
           # 修改这里，匹配我们在 build.gradle 里自定义的文件名格式
           files: app/build/outputs/apk/release/*.apk
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}git add .
