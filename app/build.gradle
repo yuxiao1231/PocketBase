@@ -6,7 +6,8 @@ plugins {
 
 repositories {
     google()
-    mainCentral()
+    mavenCentral()
+    compileSdkVersion 34
 }
 
 android {
