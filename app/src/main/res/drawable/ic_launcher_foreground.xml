@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="1024"
+    android:viewportHeight="1024">
+
+    <group
+        android:pivotX="505"
+        android:pivotY="517"
+        android:scaleX="0.68"
+        android:scaleY="0.68"
+        android:translateX="7"
+        android:translateY="-5">
+
+        <!-- Back cover shadow -->
+        <path
+            android:fillColor="#1565C0"
+            android:pathData="M833.6,958.6H243.8c-7.7,0-14-6.2-14-14V98.8c0-8.3,6.8-15.1,15.1-15.1h588.6c7.7,0,14,6.3,14,14v847c0,7.7-6.2,13.9-13.9,13.9z" />
+
+        <!-- Back cover body -->
+        <path
+            android:fillColor="#0D47A1"
+            android:pathData="M792.9,958.6H254.1c-7.4,0-13.4-6-13.4-13.4V98.3c0-8,6.6-14.6,14.6-14.6h536.5c8,0,14.6,6.5,14.6,14.6v846.9c-0.1,7.4-6.1,13.4-13.5,13.4z" />
+
+        <!-- Page block cream -->
+        <path
+            android:fillColor="#FAECC7"
+            android:pathData="M808.1,926.8H217.4c-7.4,0-13.5-6-13.5-13.5V131.5c0-7.4,6-13.5,13.5-13.5h590.7c7.4,0,13.5,6,13.5,13.5v781.9c-0.1,7.4-6.1,13.4-13.5,13.4z" />
+
+        <!-- Page block warm shading -->
+        <path
+            android:fillColor="#CCA66A"
+            android:pathData="M229.1,926.8v-752c0-15.7,12.7-28.4,28.4-28.4L792,118s15.7,3.8,15.7,30.7v778.1s-578.6,15.7-578.6,0z" />
+
+        <!-- Front cover bright blue -->
+        <path
+            android:fillColor="#2196F3"
+            android:pathData="M794.1,116.4v812c0,16.7-13.6,30.3-30.3,30.3H206.7c-16.7,0-30.3-13.5-30.3-30.3v-812c0-16.7,13.5-32.7,30.3-32.7h557.2c16.7,0,30.2,16,30.2,32.7z" />
+
+        <!-- Spine main -->
+        <path
+            android:fillColor="#1565C0"
+            android:pathData="M176.5,83.5h59.9v874.9h-59.9z" />
+
+        <!-- Spine highlight stripe -->
+        <path
+            android:fillColor="#1976D2"
+            android:pathData="M224.1,83.5h18v874.9h-18z" />
+
+        <!-- Spine inner dark edge -->
+        <path
+            android:fillColor="#0D47A1"
+            android:pathData="M241.9,83.5h10.6v874.9h-10.6z" />
+
+        <!-- Bookmark backing blue-grey -->
+        <path
+            android:fillColor="#9399BA"
+            android:pathData="M426.8,281.2l1.8-197.9H274.9l-0.9,36.9v161h1.5l67.6-48.4,82.3,48.4z" />
+
+        <!-- Bookmark ribbon gold -->
+        <path
+            android:fillColor="#FACD11"
+            android:pathData="M411.5,75.5V256h-1.4l-77.9-46-64.2,46h-1.4V75.5z" />
+
+        <!-- Bookmark top cap gold -->
+        <path
+            android:fillColor="#FACD11"
+            android:pathData="M425.4,83.3c-0.1,0.3-5.4,0.2-14-0.1-36.8-1.1-133.5-6-133.5-5.5-3.8,2.3-11.4,1.7-11.4-2.3 0-7.5,8.3-10.1,12-10.1h138.1c5.9,0.1,11.8,6.5,8.8,18z" />
+
+        <!-- WiFi outer arc r=210 -->
+        <path
+            android:fillColor="#00000000"
+            android:strokeColor="#F0EDE6"
+            android:strokeWidth="42"
+            android:strokeLineCap="round"
+            android:pathData="M 349.1,485.1 A 210,210 0 0,1 670.9,485.1" />
+
+        <!-- WiFi middle arc r=135 -->
+        <path
+            android:fillColor="#00000000"
+            android:strokeColor="#F0EDE6"
+            android:strokeWidth="42"
+            android:strokeLineCap="round"
+            android:pathData="M 406.6,533.2 A 135,135 0 0,1 613.4,533.2" />
+
+        <!-- WiFi inner arc r=60 -->
+        <path
+            android:fillColor="#00000000"
+            android:strokeColor="#F0EDE6"
+            android:strokeWidth="42"
+            android:strokeLineCap="round"
+            android:pathData="M 464.0,581.4 A 60,60 0 0,1 556.0,581.4" />
+
+        <!-- WiFi dot centre (510,640) r=26 -->
+        <path
+            android:fillColor="#F0EDE6"
+            android:pathData="M 510,614 A 26,26 0 0,0 510,666 A 26,26 0 0,0 510,614 Z" />
+
+    </group>
+
+</vector>

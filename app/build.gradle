@@ -1,0 +1,60 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+}
+
+// 仓库定义挪到 plugins 后面，这样它就没话说了
+repositories {
+    google()
+    mavenCentral()
+}
+
+android {
+    namespace 'com.xiao.pocketbase'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.xiao.pocketbase"
+        minSdk 24
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+    }
+
+    // --- 关键修复代码开始 ---
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    kotlinOptions {
+        jvmTarget = '17'
+    }
+    packaging {
+        resources {
+            excludes += '/META-INF/INDEX.LIST'
+            excludes += '/META-INF/io.netty.versions.properties'
+            // 顺便排除掉一些常见的 Ktor/Netty 冗余文件
+            excludes += '/META-INF/okio.kotlin_module'
+        }
+    }
+}
+    // --- 关键修复代码结束 --
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.11.0'
+    implementation 'io.ktor:ktor-server-core:2.3.9'
+    implementation 'io.ktor:ktor-server-netty:2.3.9'
+    
+    // 1. 网页解析
+    implementation 'org.jsoup:jsoup:1.17.2'
+    
+    // 2. Room 数据库 (SQL)
+    def room_version = "2.6.1"
+    implementation "androidx.room:room-runtime:$room_version"
+    implementation "androidx.room:room-ktx:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
+    
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.9.20"
+}

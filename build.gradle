@@ -1,0 +1,18 @@
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:8.2.0'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.20"
+    }
+}
+
+// 这个 allprojects 会给所有模块（包括 app）注入仓库地址，是双保险
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
