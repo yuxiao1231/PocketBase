@@ -20,15 +20,18 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
-          
+
+      # 1. 自动安装 Gradle，这样就不需要项目里有 gradlew 文件了
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v3
         with:
           gradle-version: 8.2
 
+      # 2. 直接编译（注意这里没有 ./ ，直接用 gradle 命令）
       - name: Build with Gradle
         run: gradle assembleRelease --stacktrace
 
+      # 3. 发布到 Release 页面
       - name: Upload to Release
         uses: softprops/action-gh-release@v2
         if: success()
