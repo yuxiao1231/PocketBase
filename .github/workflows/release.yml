@@ -21,21 +21,29 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      # 1. 自动安装 Gradle，这样就不需要项目里有 gradlew 文件了
+      # --- 核心：从 Secrets 还原 JKS 密钥文件 ---
+      - name: Decode Keystore
+        run: |
+          echo "${{ secrets.RELEASE_KEY_BASE64 }}" | base64 -d > app/release-key.jks
+
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v3
         with:
           gradle-version: 8.2
 
-      # 2. 直接编译（注意这里没有 ./ ，直接用 gradle 命令）
       - name: Build with Gradle
+        # 注入环境变量，让 build.gradle 里的 System.getenv 能拿到密码
         run: gradle assembleRelease --stacktrace
+        env:
+          SIGNING_STORE_PASSWORD: ${{ secrets.SIGNING_STORE_PASSWORD }}
+          SIGNING_KEY_ALIAS: ${{ secrets.SIGNING_KEY_ALIAS }}
+          SIGNING_KEY_PASSWORD: ${{ secrets.SIGNING_KEY_PASSWORD }}
 
-      # 3. 发布到 Release 页面
       - name: Upload to Release
         uses: softprops/action-gh-release@v2
         if: success()
         with:
+          # 修改这里，匹配我们在 build.gradle 里自定义的文件名格式
           files: app/build/outputs/apk/release/*.apk
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
