@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">PocketBase</string>
+    <string name="shortcut_start_label">Start OPDS</string>
+    <string name="shortcut_stop_label">Stop OPDS</string>
 </resources>
