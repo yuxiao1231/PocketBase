@@ -76,7 +76,7 @@
   "log_repo_create_fail": "❌ 创建失败: %s",
   "log_repo_not_dir": "❌ 错误: 目标路径不是一个文件夹！",
   "log_repo_dir_ok": "✅ 目录已确认。正在启动深层递归扫描 (walkTopDown)...",
-  "log_repo_warn_empty": "⚠️ 警告: 目录有效，但没有找到任何 %s 格式的书籍。如果是 Legado 目录，请检查是否已下载正文。",
+  "log_repo_warn_empty": "⚠️ 警告: 目录有效，但没有找到任何 %s 格式的书籍。如果是从阅读软件导出的目录，请检查是否已下载正文。",
   "log_repo_scan_done": "📚 扫描完成: 共发现 %d 本书籍文件。正在构建元数据映射表...",
   "log_repo_map_done": "✅ 映射完毕。当前库容量: %d",
   

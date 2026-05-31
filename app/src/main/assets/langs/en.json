@@ -76,7 +76,7 @@
   "log_repo_create_fail": "❌ Creation failed: %s",
   "log_repo_not_dir": "❌ Error: Target path is not a directory!",
   "log_repo_dir_ok": "✅ Directory confirmed. Starting deep recursive scan...",
-  "log_repo_warn_empty": "⚠️ Warning: Directory is valid, but no books found in %s format. If using Legado, check if text files are downloaded.",
+  "log_repo_warn_empty": "⚠️ Warning: Directory is valid, but no books found in %s format. If using a reading app, check if text files are downloaded.",
   "log_repo_scan_done": "📚 Scan complete: Found %d book files. Building metadata map...",
   "log_repo_map_done": "✅ Mapping complete. Current library size: %d",
   

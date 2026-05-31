@@ -7,7 +7,7 @@ import java.io.File
 object BookRepository {
     var isShadowConvertEnabled = false
     
-    // 默认指向系统书籍目录，你也可以在 UI 里随时改到 Legado 目录
+    // 默认指向系统书籍目录，你也可以在 UI 里随时改到阅读软件导出的目录
     private var rootPath = "/storage/emulated/0/books" 
     private var cachedBooks: List<Pair<File, BookMetadataEntity>> = emptyList()
 

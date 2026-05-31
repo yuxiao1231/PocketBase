@@ -1,6 +1,6 @@
 # 📖 PocketBase 极客手册 / Technical & Usage Manual
 
-> **版本 / Version：** v1.0.2  
+> **版本 / Version：** v1.0.3  
 > **核心属性 / Core Attributes：** 本地化 (Local) / 标准协议 (Standard Protocol) / 自动化元数据 (Automated Metadata)
 
 PocketBase 是一个为了解决“移动端碎片化阅读与专业阅读设备隔离”而生的中间件。它通过实现标准的 OPDS 协议，将 Android 设备的本地文件系统转化为一个动态、可扫描、可交互的图书基站。
@@ -25,13 +25,13 @@ PocketBase 是一个为了解决“移动端碎片化阅读与专业阅读设备
 
 ## 🛠️ 操作文档：从采集到降临 / Operation Guide: From Ingest to Outgest
 
-本指南将指导你完成从 Legado 提取资源，经过 PocketBase 净化分发，最终降临到 KOReader 的全过程。
-*This guide covers the process of extracting resources from Legado, distributing them via PocketBase, and accessing them in KOReader.*
+本指南将指导你完成从阅读软件提取资源，经过 PocketBase 净化分发，最终降临到 KOReader 的全过程。
+*This guide covers the process of extracting resources from a reading app, distributing them via PocketBase, and accessing them in KOReader.*
 
-### 1. 弹药采集：从 Legado 导出 / Data Ingest: Export from Legado
-Legado（阅读）是强大的书源聚合器，但缓存通常是私有的。
-*Legado is a powerful reading aggregator, but its cache is usually private.*
-* **操作步骤 (Steps)**：打开 Legado ➡️ 进入 `我的 (Profile)` ➡️ `本地书籍 (Local Books)` ➡️ 点击右上角选择 `导出书籍 (Export)`。
+### 1. 弹药采集：从阅读软件导出 / Data Ingest: Export
+许多阅读软件是强大的书源聚合器，但缓存通常是私有的。
+*Reading apps are powerful aggregators, but their caches are usually private.*
+* **操作步骤 (Steps)**：打开你的阅读软件，找到导出书籍的功能，将书籍导出为 `.txt` 或 `.epub` 格式。
 * **关键点 (Tip)**：建议在手机根目录新建文件夹 `PocketBase_Library`，将导出的 `.txt` 或 `.epub` 统一存放在这里。
   *It is recommended to create a folder named `PocketBase_Library` in your phone's root directory to store all exported files.*
 
@@ -55,7 +55,6 @@ Legado（阅读）是强大的书源聚合器，但缓存通常是私有的。
 
 ## 🔗 资源与越狱提示 / Resources & Jailbreak Tips
 
-* **[Legado (阅读)](https://github.com/gedoor/legado/releases)**: Android 侧最强采集端。 / *The most powerful open-source reading app on Android.*
 * **[KOReader](https://github.com/koreader/koreader/releases)**: 跨平台排版之王。 / *The ultimate cross-platform document viewer for E-ink devices.*
 * **Kindle 破解特别提醒 / Kindle Jailbreak Warning**:
     * 在 Kindle 上运行 KOReader 需要越狱 (Jailbreak is required)。
