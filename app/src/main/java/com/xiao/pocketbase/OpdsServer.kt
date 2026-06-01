@@ -119,6 +119,7 @@ object OpdsServer {
             val displayMime = if (useShadow) "application/epub+zip" else when (ext) {
                 "epub" -> "application/epub+zip"
                 "mobi" -> "application/x-mobipocket-ebook"
+                "pdf" -> "application/pdf"
                 else -> "text/plain"
             }
             
@@ -132,10 +133,10 @@ object OpdsServer {
                     <updated>${formatIsoDate(file.lastModified())}</updated>
                     <content type="text">${file.name}</content>
                     <link rel="http://opds-spec.org/acquisition" 
-                          href="/download/${URLEncoder.encode(file.name, "UTF-8")}" 
+                          href="/download/${URLEncoder.encode(file.name, "UTF-8").replace("+", "%20")}" 
                           type="$displayMime"/>
                     <link rel="http://opds-spec.org/image" 
-                          href="/cover/${URLEncoder.encode(file.name, "UTF-8")}"/>
+                          href="/cover/${URLEncoder.encode(file.name, "UTF-8").replace("+", "%20")}"/>
                 </entry>
             """)
         }

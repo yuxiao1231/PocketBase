@@ -42,7 +42,7 @@ object BookRepository {
         onLog?.invoke(I18n.t("log_repo_dir_ok"))
 
         // 【核心修复】：使用 walkTopDown() 进行无限极递归扫描
-        val validExtensions = listOf("epub", "mobi", "txt")
+        val validExtensions = listOf("epub", "mobi", "txt", "pdf")
         val files = dir.walkTopDown()
             .filter { f -> 
                 f.isFile && 
