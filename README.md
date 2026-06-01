@@ -15,9 +15,9 @@
 </p>
 
 <p align="center">
-  <img src="picture/1.jpg" width="250" style="margin: 5px;">
-  <img src="picture/2.jpg" width="250" style="margin: 5px;">
-  <img src="picture/3.jpg" width="250" style="margin: 5px;">
+  <img src="picture/1.jpg" width="600" style="margin: 5px; max-width: 100%;"><br>
+  <img src="picture/2.jpg" width="290" style="margin: 5px; max-width: 45%;">
+  <img src="picture/3.jpg" width="290" style="margin: 5px; max-width: 45%;">
 </p>
 
 ---
