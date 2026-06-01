@@ -100,10 +100,13 @@ object OpdsServer {
         // 【I18n 接入】：让 OPDS 根标题动态化
         val feedTitle = I18n.t("app_name") 
         
-        sb.append("""<?xml version="1.0" encoding="UTF-8"?><feed xmlns="http://www.w3.org/2005/Atom">
+        sb.append("""<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:opds="http://opds-spec.org/2010/catalog">
             <id>urn:uuid:xiao-pocketbase</id><title>$feedTitle</title>
             <updated>${formatIsoDate(System.currentTimeMillis())}</updated>
-            <author><name>PocketBase</name></author>""")
+            <author><name>PocketBase</name></author>
+            <link rel="self" href="/opds" type="application/atom+xml;profile=opds-catalog" />
+            <link rel="start" href="/opds" type="application/atom+xml;profile=opds-catalog" />""")
 
         // 【I18n 接入】：获取影子标识
         val shadowTag = I18n.t("tag_shadow")
@@ -124,8 +127,10 @@ object OpdsServer {
 
             sb.append("""
                 <entry>
+                    <id>urn:uuid:${java.util.UUID.nameUUIDFromBytes(file.name.toByteArray())}</id>
                     <title>$displayTitle</title>
                     <updated>${formatIsoDate(file.lastModified())}</updated>
+                    <content type="text">${file.name}</content>
                     <link rel="http://opds-spec.org/acquisition" 
                           href="/download/${URLEncoder.encode(file.name, "UTF-8")}" 
                           type="$displayMime"/>
