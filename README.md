@@ -14,11 +14,34 @@
   <i>让每一本书都有它应有的名字。</i>
 </p>
 
+<p align="center">
+  <img src="picture/1.jpg" width="250" style="margin: 5px;">
+  <img src="picture/2.jpg" width="250" style="margin: 5px;">
+  <img src="picture/3.jpg" width="250" style="margin: 5px;">
+</p>
+
 ---
 
 # 中文
 
 **PocketBase（口袋基站）** 是一款专为极客打造的本地书籍管理与 OPDS 服务工具。它能让你的 Android 设备瞬间变身为一个高性能的电子书元数据处理中心。
+
+## 🏗 架构总览 (Architecture)
+
+```mermaid
+graph TD
+    subgraph Android Device
+        UI[MainActivity UI] --> Repo(BookRepository)
+        UI --> Meta(MetadataManager)
+        UI --> OPDS(OpdsServer / Ktor)
+        
+        Repo -->|Scan EPUB/TXT/MOBI/PDF| FS[(Local Storage)]
+        Meta -->|Fetch Metadata API| Web[Bangumi / Douban]
+        OPDS -->|Serve XML & Files| Repo
+    end
+    
+    Client[KOReader / E-ink Reader] -- WiFi LAN :8080 --> OPDS
+```
 
 ## ✨ 核心特性
 
